@@ -22,7 +22,7 @@ cav_dir = working_dir + '/cavs/'
 # where the images live.
 
 # TODO: replace 'YOUR_PATH' with path to downloaded models and images.
-source_dir = '../ZebraData'
+source_dir = 'ZebraData'
 bottlenecks = [ 'mixed4c','mixed3a']  # @param
 
 utils.make_dir_if_not_exists(activation_dir)
