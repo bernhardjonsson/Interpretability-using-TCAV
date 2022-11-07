@@ -6,6 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+# For macs
+.DS_Store
+
+# Data directories
+ZebraData/
+
+
 # Distribution / packaging
 .Python
 build/
