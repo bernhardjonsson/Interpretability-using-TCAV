@@ -3,9 +3,10 @@ import tcav.cav as cav
 import tcav.model  as model
 import tcav.tcav as tcav
 import tcav.utils as utils
-import tcav.utils_plot as utils_plot # utils_plot requires matplotlib
+#import tcav.utils_plot as utils_plot # utils_plot requires matplotlib
 import os
 import tensorflow as tf
+import pickle
 
 
 # This is the name of your model wrapper (InceptionV3 and GoogleNet are provided in model.py)
@@ -22,7 +23,7 @@ cav_dir = working_dir + '/cavs/'
 # where the images live.
 
 # TODO: replace 'YOUR_PATH' with path to downloaded models and images.
-source_dir = 'ZebraData'
+source_dir = 'Data'
 bottlenecks = [ 'mixed4c','mixed3a']  # @param
 
 utils.make_dir_if_not_exists(activation_dir)
@@ -71,4 +72,6 @@ mytcav = tcav.TCAV(sess,
 print ('This may take a while... Go get coffee!')
 results = mytcav.run(run_parallel=False)
 print ('done!')
-utils_plot.plot_results(results, num_random_exp=num_random_exp)
+file = open('results.bin', 'wb')
+pickle.dump(results, file)
+file.close()
