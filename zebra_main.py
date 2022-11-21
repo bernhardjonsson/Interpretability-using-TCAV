@@ -13,7 +13,7 @@ import pickle
 model_to_run = 'GoogleNet'
 user = 'ben'
 # the name of the parent directory that results are stored (only if you want to cache)
-project_name = 'tcav_zebra_test'
+project_name = 'tcav_fire_engine'
 working_dir = "/tmp/" + user + '/' + project_name
 # where activations are stored (only if your act_gen_wrapper does so)
 activation_dir =  working_dir+ '/activations/'
@@ -23,8 +23,8 @@ cav_dir = working_dir + '/cavs/'
 # where the images live.
 
 # TODO: replace 'YOUR_PATH' with path to downloaded models and images.
-source_dir = 'Data'
-bottlenecks = [ 'mixed4c','mixed3a']  # @param
+source_dir = """/mnt/c/Users/bejons/Documents/wsl_Share_Space/DeepLearning/data"""
+bottlenecks = [ 'mixed3a','mixed3b','mixed4a','mixed4b','mixed4c','mixed4d','mixed4e','mixed5a','mixed5b','logit']  # @param
 
 utils.make_dir_if_not_exists(activation_dir)
 utils.make_dir_if_not_exists(working_dir)
@@ -33,15 +33,15 @@ utils.make_dir_if_not_exists(cav_dir)
 # this is a regularizer penalty parameter for linear classifier to get CAVs.
 alphas = [0.1]
 
-target = 'zebra'
-concepts = ["dotted","striped","zigzagged"]
+target = 'fire engine'
+concepts = ["red-c","blue-c","green-c"]
 
 
 # Create TensorFlow session.
 sess = utils.create_session()
 
 # GRAPH_PATH is where the trained model is stored.
-GRAPH_PATH = source_dir + "/inception5h/tensorflow_inception_graph.pb"
+GRAPH_PATH = source_dir + """/inception5h/tensorflow_inception_graph.pb"""
 # LABEL_PATH is where the labels are stored. Each line contains one class, and they are ordered with respect to their index in
 # the logit layer. (yes, id_to_label function in the model wrapper reads from this file.)
 # For example, imagenet_comp_graph_label_strings.txt looks like:
@@ -50,16 +50,16 @@ GRAPH_PATH = source_dir + "/inception5h/tensorflow_inception_graph.pb"
 # English setter
 # Siberian husky ...
 
-LABEL_PATH = source_dir + "/inception5h/imagenet_comp_graph_label_strings.txt"
+LABEL_PATH = source_dir + """/inception5h/imagenet_comp_graph_label_strings.txt"""
 
 mymodel = model.GoogleNetWrapper_public(sess,
                                         GRAPH_PATH,
                                         LABEL_PATH)
 
-act_generator = act_gen.ImageActivationGenerator(mymodel, source_dir, activation_dir, max_examples=100)
+act_generator = act_gen.ImageActivationGenerator(mymodel, source_dir, activation_dir, max_examples=200)
 import absl
 absl.logging.set_verbosity(0)
-num_random_exp=3
+num_random_exp=500
 ## only running num_random_exp = 10 to save some time. The paper number are reported for 500 random runs.
 mytcav = tcav.TCAV(sess,
                    target,
@@ -72,6 +72,6 @@ mytcav = tcav.TCAV(sess,
 print ('This may take a while... Go get coffee!')
 results = mytcav.run(run_parallel=False)
 print ('done!')
-file = open('results.bin', 'wb')
+file = open('fire_engin_results.bin', 'wb')
 pickle.dump(results, file)
 file.close()
