@@ -1,6 +1,6 @@
 import tcav.activation_generator as act_gen
 import tcav.cav as cav
-import tcav.model  as model
+import Classes.model  as model
 import tcav.tcav as tcav
 import tcav.utils as utils
 #import tcav.utils_plot as utils_plot # utils_plot requires matplotlib
@@ -59,7 +59,7 @@ mymodel = model.GoogleNetWrapper_public(sess,
 act_generator = act_gen.ImageActivationGenerator(mymodel, source_dir, activation_dir, max_examples=200)
 import absl
 absl.logging.set_verbosity(0)
-num_random_exp=500
+num_random_exp=25
 ## only running num_random_exp = 10 to save some time. The paper number are reported for 500 random runs.
 mytcav = tcav.TCAV(sess,
                    target,

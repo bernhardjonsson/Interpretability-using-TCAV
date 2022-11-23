@@ -217,15 +217,21 @@ class TCAV(object):
           lambda p: self._run_single_set(
             p, overwrite=overwrite, run_parallel=run_parallel),
           self.params), 1):
+        print('Finished running param %s of %s' % (i, len(self.params)))
         tf.compat.v1.logging.info('Finished running param %s of %s' % (i, len(self.params)))
         results.append(res)
       pool.close()
     else:
       for i, param in enumerate(self.params):
+        print('Running param %s of %s' % (i, len(self.params)))
         tf.compat.v1.logging.info('Running param %s of %s' % (i, len(self.params)))
         results.append(self._run_single_set(param, overwrite=overwrite, run_parallel=run_parallel))
-    tf.compat.v1.logging.info('Done running %s params. Took %s seconds...' % (len(
+        tf.compat.v1.logging.info('Done running %s params. Took %s seconds...' % (len(
         self.params), time.time() - now))
+        print('Done running %s params. Took %s seconds...' % (len(
+        self.params), time.time() - now))
+    
+    print("Done ! time: " + str(time.time() - now))
     if return_proto:
       return utils.results_to_proto(results)
     else:
