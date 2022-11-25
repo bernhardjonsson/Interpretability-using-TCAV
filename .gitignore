@@ -5,7 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
-
+Random/
+tmp/
 # For macs
 .DS_Store
 
