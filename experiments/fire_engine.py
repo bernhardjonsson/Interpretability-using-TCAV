@@ -1,6 +1,6 @@
 import tcav.activation_generator as act_gen
 import tcav.cav as cav
-import Classes.model  as model
+import src.model as model
 import tcav.tcav as tcav
 import tcav.utils as utils
 #import tcav.utils_plot as utils_plot # utils_plot requires matplotlib
@@ -9,12 +9,10 @@ import tensorflow as tf
 import pickle
 
 
-# This is the name of your model wrapper (InceptionV3 and GoogleNet are provided in model.py)
-model_to_run = 'GoogleNet'
-user = 'ben'
+project_dir = 'tcav_dir'
 # the name of the parent directory that results are stored (only if you want to cache)
 project_name = 'tcav_fire_engine'
-working_dir = "/tmp/" + user + '/' + project_name
+working_dir = "/tmp/" + project_dir + '/' + project_name
 # where activations are stored (only if your act_gen_wrapper does so)
 activation_dir =  working_dir+ '/activations/'
 # where CAVs are stored.

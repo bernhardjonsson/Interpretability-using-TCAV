@@ -1,7 +1,7 @@
 import pickle
 import tcav.utils_plot as utils_plot # utils_plot requires matplotlib
 
-file = 'fire_engin_results.bin'
+file = 'fire_engin_results_25rand.bin'
 random_exp = 25
 
 with open(file, 'rb') as f:
