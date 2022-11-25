@@ -1,11 +1,39 @@
 # Interpretability-using-TCAV
 
+## References
+
+This repository uses code from the original [tensorflow/tcav](https://github.com/tensorflow/tcav)
+
 ## Downloading data
 
-For downloading data run:
+The data that were used are from [ImageNet](https://www.image-net.org/) but limited Imagenet dataset, which was used in these experiments,
+can be downloaded from there [kaggle challenge](https://www.kaggle.com/competitions/imagenet-object-localization-challenge/data).
 
-``` bash
-python download_and_make_datasets.py --source_dir=YOUR_FOLDER --number_of_images_per_folder=50 --number_of_random_folders=3
-```
-If different classes and concepts are desired open "download_and_make_datasets.py" and change the "imagenet_classes" and "broden_concepts"
-found at line number 49 and 50.
+The random generation of folders is generated using the above dataset but the *random_gen.py* extracts random images from that folder.
+
+I single class can also be downloaded by using following link *https://image-net.org/data/winter21_whole/wnid.tar* where the wnid of desired class can be found in the [LOC_synset_mapping.txt](https://www.kaggle.com/competitions/imagenet-object-localization-challenge/data?select=LOC_synset_mapping.txt)
+
+
+## Running experiments
+
+An example of the suit and fire engine experiments can be seen in there respective python files. These experiments used 200 items per folder and 25 random folders, due to unavailable computational resource the desired 500 random folder was unreacable.
+
+A small demo experiment with explanations can be found in *TCAV_notebook.ipynb*
+
+## Requirements
+Following packages are required:
+
+- tensorflow
+- tcav
+- numpy
+- Pillow
+- matplotlib
+- scikit-learn
+- scipy
+
+A virtual environment can be set up using the requirements.txt file using python==3.9.15
+
+
+
+
+
