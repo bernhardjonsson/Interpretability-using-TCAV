@@ -31,9 +31,8 @@ Following packages are required:
 - scikit-learn
 - scipy
 
-A virtual environment can be set up using the requirements.txt file using python==3.9.15
-
-
+A virtual environment can be set up using the requirements.txt.
+If it is desired to run the code on a windows operating system, it recomended by tensorflow to set it up on windows subsystem. Therfore, a seperate requirements file for that type of setup is provided. The virtual environment on the subsystem was set up using a conda and python==3.9.15
 
 
 
