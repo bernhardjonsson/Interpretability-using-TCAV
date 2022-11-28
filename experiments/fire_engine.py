@@ -32,7 +32,7 @@ utils.make_dir_if_not_exists(cav_dir)
 alphas = [0.1]
 
 target = 'fire engine'
-concepts = ["red-c","blue-c","green-c"]
+concepts = ["red-c","yellow-c","blue-c","green-c"]
 
 
 # Create TensorFlow session.
@@ -70,6 +70,6 @@ mytcav = tcav.TCAV(sess,
 print ('This may take a while... Go get coffee!')
 results = mytcav.run(run_parallel=False)
 print ('done!')
-file = open('fire_engin_results.bin', 'wb')
+file = open('fire_engine_results.bin', 'wb')
 pickle.dump(results, file)
 file.close()
